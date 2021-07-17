@@ -35,6 +35,9 @@ function changeColorMode() {
             currentValue = Number(currentValue);
             if (currentValue <= 1) {
                 this.setAttribute('style', `background-color: rgba(0, 0, 0, ${currentValue + 0.1})`)
+            } else if (currentValue > 1.1 || isNaN(currentValue)) {
+                currentValue = 0;
+                this.setAttribute('style', `background-color: rgba(0, 0, 0, ${currentValue + 0.1})`)
             } else {
                 this.setAttribute('style', `background-color: rgba(0, 0, 0, 1);`)
 
@@ -42,7 +45,7 @@ function changeColorMode() {
             break;
 
         case 'eraser':
-            this.setAttribute('style', 'background-color: white;')
+            this.setAttribute('style', 'background-color: ;')
             break;
     }
 }
