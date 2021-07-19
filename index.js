@@ -4,14 +4,17 @@ const clearButton = document.querySelectorAll('button')[4];
 const newGridButton = document.querySelectorAll('button')[5];
 let colorMode = '';
 
+
+
+//Initial grid
 for (let i = 0; i < 256; i++) {
     const newDiv = document.createElement('div');
     document.querySelector('.grid-container').appendChild(newDiv);
 }
 
+//Event Listeners
 clearButton.addEventListener('click', clearGrid);
 newGridButton.addEventListener('click', newGrid);
-
 buttons.forEach((button => {
     button.addEventListener('click', changeColor);
 }));
