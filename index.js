@@ -64,7 +64,11 @@ function newGrid() {
     const gridContainer = document.querySelector('.grid-container');
 
     do {
-        number = parseInt(prompt('Enter grid size:', 16), 10);
+        number = prompt('Enter grid size:', 16);
+        if (number == null) return;
+        else {
+            number = parseInt(number, 10);
+        }
     } while (number > 100 || number < 1 || isNaN(number));
 
     gridContainer.textContent = '';
@@ -73,4 +77,7 @@ function newGrid() {
         const newDiv = document.createElement('div')
         gridContainer.appendChild(newDiv);
     }
+    square.forEach((div => {
+        div.addEventListener('mouseover', changeColorMode);
+    }));
 }
