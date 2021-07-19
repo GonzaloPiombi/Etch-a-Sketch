@@ -39,13 +39,13 @@ function changeColorMode() {
         case 'gray':
             let currentValue = this.style.backgroundColor;
             let newCurrentValue = currentValue.slice(-5, -1);
-            newCurrentValue = Number(newCurrentValue);
+            newCurrentValue = Number(newCurrentValue); //Get the last bit of the rgba value and turn it into a number
             if (newCurrentValue < 1) {
                 this.setAttribute('style', `background-color: rgba(0, 0, 0, ${newCurrentValue + 0.1})`)
-            } else if ((newCurrentValue > 1 || isNaN(newCurrentValue)) && currentValue != 'rgb(0, 0, 0)') {
-                newCurrentValue = 0;
-                this.setAttribute('style', `background-color: rgba(0, 0, 0, ${newCurrentValue + 0.1})`)
-            } else {
+            } else if ((newCurrentValue > 1 || isNaN(newCurrentValue)) && currentValue != 'rgb(0, 0, 0)') { //Here we check for a value > 1 or NaN so when we go over
+                newCurrentValue = 0;                                                                        //a black or rgb value, it starts from the lightest gray
+                this.setAttribute('style', `background-color: rgba(0, 0, 0, ${newCurrentValue + 0.1})`)     //The != 'rgb(0, 0, 0)' works so when we reach black with the 
+            } else {                                                                                        //grayscale option it does not start over from the lightest
                 this.setAttribute('style', `background-color: rgba(0, 0, 0, 1);`)
 
             };
@@ -68,7 +68,7 @@ function newGrid() {
 
     do {
         number = prompt('Enter grid size:', 16);
-        if (number == null) return;
+        if (number == null) return; //We check for a null value, so the prompt does not force an answer and you can go back to the current grid.
         else {
             number = parseInt(number, 10);
         }
