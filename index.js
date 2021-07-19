@@ -31,13 +31,13 @@ function changeColorMode() {
 
         case 'gray':
             let currentValue = this.style.backgroundColor;
-            currentValue = currentValue.slice(-5, -1);
-            currentValue = Number(currentValue);
-            if (currentValue <= 1) {
-                this.setAttribute('style', `background-color: rgba(0, 0, 0, ${currentValue + 0.1})`)
-            } else if (currentValue > 1.1 || isNaN(currentValue)) {
-                currentValue = 0;
-                this.setAttribute('style', `background-color: rgba(0, 0, 0, ${currentValue + 0.1})`)
+            let newCurrentValue = currentValue.slice(-5, -1);
+            newCurrentValue = Number(newCurrentValue);
+            if (newCurrentValue < 1) {
+                this.setAttribute('style', `background-color: rgba(0, 0, 0, ${newCurrentValue + 0.1})`)
+            } else if ((newCurrentValue > 1 || isNaN(newCurrentValue)) && currentValue != 'rgb(0, 0, 0)') {
+                newCurrentValue = 0;
+                this.setAttribute('style', `background-color: rgba(0, 0, 0, ${newCurrentValue + 0.1})`)
             } else {
                 this.setAttribute('style', `background-color: rgba(0, 0, 0, 1);`)
 
